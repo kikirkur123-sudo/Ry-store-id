@@ -440,6 +440,24 @@
       syncCartBadge();
       document.getElementById('year').textContent = new Date().getFullYear();
     });
+
+    <body style="-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;">
+
+    // Disable klik kanan
+    document.addEventListener("contextmenu", function(e){
+      e.preventDefault();
+      alert("Klik kanan dimatikan!");
+    });
+
+    // Disable beberapa shortcut keyboard
+    document.addEventListener("keydown", function(e) {
+      if (e.ctrlKey) {
+        if (e.key === "c" || e.key === "u" || e.key === "s" || e.key === "a") {
+          e.preventDefault();
+          alert("Fungsi keyboard ini dimatikan!");
+        }
+      }
+    });
   </script>
 </body>
 </html>
