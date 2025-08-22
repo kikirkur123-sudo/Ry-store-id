@@ -1,0 +1,16 @@
+/* Custom CSS */
+body {
+  font-family: 'Arial', sans-serif;
+}
+.text-brand {
+  color: #2563eb;
+}
+.bg-brand {
+  background-color: #2563eb;
+}
+/* Responsive tweak */
+@media (max-width: 768px) {
+  main {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
