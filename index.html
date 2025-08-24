@@ -243,10 +243,40 @@
       <select id="citySelect" 
               class="w-full md:w-2/3 border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-purple-500 focus:outline-none">
         <option value="">-- Pilih Kota Tujuan --</option>
-        <option value="jakarta">Jakarta</option>
-        <option value="surabaya">Surabaya</option>
-        <option value="medan">Medan</option>
-        <option value="makassar">Makassar</option>
+  <option value="jakarta">Jakarta</option>
+  <option value="bandung">Bandung</option>
+  <option value="surabaya">Surabaya</option>
+  <option value="medan">Medan</option>
+  <option value="semarang">Semarang</option>
+  <option value="yogyakarta">Yogyakarta</option>
+  <option value="palembang">Palembang</option>
+  <option value="denpasar">Denpasar</option>
+  <option value="makassar">Makassar</option>
+  <option value="manado">Manado</option>
+  <option value="banda_aceh">Banda Aceh</option>
+  <option value="bengkulu">Bengkulu</option>
+  <option value="palu">Palu</option>
+  <option value="mataram">Mataram</option>
+  <option value="gorontalo">Gorontalo</option>
+  <option value="ambon">Ambon</option>
+  <option value="kupang">Kupang</option>
+  <option value="pontianak">Pontianak</option>
+  <option value="banjarmasin">Banjarmasin</option>
+  <option value="jayapura">Jayapura</option>
+  <option value="serang">Serang</option>
+  <option value="tasikmalaya">Tasikmalaya</option>
+  <option value="cirebon">Cirebon</option>
+  <option value="bogor">Bogor</option>
+  <option value="depok">Depok</option>
+  <option value="bekasi">Bekasi</option>
+  <option value="tangerang">Tangerang</option>
+  <option value="palangkaraya">Palangkaraya</option>
+  <option value="lampung">Bandar Lampung</option>
+  <option value="jambi">Jambi</option>
+  <option value="riau">Pekanbaru</option>
+  <option value="bangka_belitung">Pangkal Pinang</option>
+  <option value="nusa_tenggara_barat">Mataram</option>
+  <option value="sulawesi_selatan">Makassar</option>
       </select>
       <button onclick="cekOngkir()" 
               class="bg-purple-600 hover:bg-purple-700 text-white font-semibold px-6 py-2 rounded-lg shadow-md transition">
@@ -276,10 +306,40 @@
     const etd = document.getElementById("etd");
 
     let data = {
-      jakarta: { name: "Jakarta", price: "Rp 15.000", etd: "1-2 Hari" },
-      surabaya: { name: "Surabaya", price: "Rp 20.000", etd: "2-3 Hari" },
-      medan: { name: "Medan", price: "Rp 30.000", etd: "3-5 Hari" },
-      makassar: { name: "Makassar", price: "Rp 35.000", etd: "3-6 Hari" }
+      "jakarta": { "name": "Jakarta", "price": "Rp 15.000", "etd": "1-2 Hari" },
+      "bandung": { "name": "Bandung", "price": "Rp 10.000", "etd": "1 Hari" },
+      "surabaya": { "name": "Surabaya", "price": "Rp 20.000", "etd": "2-3 Hari" },
+      "medan": { "name": "Medan", "price": "Rp 30.000", "etd": "3-5 Hari" },
+      "semarang": { "name": "Semarang", "price": "Rp 18.000", "etd": "2-3 Hari" },
+      "yogyakarta": { "name": "Yogyakarta", "price": "Rp 17.000", "etd": "2-3 Hari" },
+      "palembang": { "name": "Palembang", "price": "Rp 22.000", "etd": "2-4 Hari" },
+      "denpasar": { "name": "Denpasar", "price": "Rp 25.000", "etd": "3-4 Hari" },
+      "makassar": { "name": "Makassar", "price": "Rp 35.000", "etd": "3-6 Hari" },
+      "manado": { "name": "Manado", "price": "Rp 38.000", "etd": "4-7 Hari" },
+      "banda aceh": { "name": "Banda Aceh", "price": "Rp 40.000", "etd": "4-7 Hari" },
+      "bengkulu": { "name": "Bengkulu", "price": "Rp 28.000", "etd": "3-5 Hari" },
+      "palu": { "name": "Palu", "price": "Rp 42.000", "etd": "4-7 Hari" },
+      "mataram": { "name": "Mataram", "price": "Rp 32.000", "etd": "3-5 Hari" },
+      "gorontalo": { "name": "Gorontalo", "price": "Rp 36.000", "etd": "4-7 Hari" },
+      "ambon": { "name": "Ambon", "price": "Rp 50.000", "etd": "5-8 Hari" },
+      "kupang": { "name": "Kupang", "price": "Rp 55.000", "etd": "5-8 Hari" },
+      "pontianak": { "name": "Pontianak", "price": "Rp 30.000", "etd": "3-5 Hari" },
+      "banjarmasin": { "name": "Banjarmasin", "price": "Rp 28.000", "etd": "2-4 Hari" },
+      "jayapura": { "name": "Jayapura", "price": "Rp 55.000", "etd": "5-8 Hari" },
+      "serang": { "name": "Serang", "price": "Rp 15.000", "etd": "1-2 Hari" },
+      "tasikmalaya": { "name": "Tasikmalaya", "price": "Rp 12.000", "etd": "1 Hari" },
+      "cirebon": { "name": "Cirebon", "price": "Rp 12.000", "etd": "1 Hari" },
+      "bogor": { "name": "Bogor", "price": "Rp 13.000", "etd": "1 Hari" },
+      "depok": { "name": "Depok", "price": "Rp 14.000", "etd": "1 Hari" },
+      "bekasi": { "name": "Bekasi", "price": "Rp 14.000", "etd": "1 Hari" },
+      "tangerang": { "name": "Tangerang", "price": "Rp 14.000", "etd": "1 Hari" },
+      "palangkaraya": { "name": "Palangkaraya", "price": "Rp 33.000", "etd": "3-5 Hari" },
+      "lampung": { "name": "Bandar Lampung", "price": "Rp 20.000", "etd": "2-3 Hari" },
+      "jambi": { "name": "Jambi", "price": "Rp 28.000", "etd": "3-5 Hari" },
+      "riau": { "name": "Pekanbaru", "price": "Rp 28.000", "etd": "3-5 Hari" },
+      "bangka belitung": { "name": "Pangkal Pinang", "price": "Rp 30.000", "etd": "3-5 Hari" },
+      "nusa tenggara barat": { "name": "Mataram", "price": "Rp 32.000", "etd": "3-5 Hari" },
+      "sulawesi selatan": { "name": "Makassar", "price": "Rp 35.000", "etd": "3-6 Hari" }
     };
 
     if (city && data[city]) {
@@ -293,34 +353,6 @@
   }
 </script>
 
-
-
-<script>
-  async function cekOngkir() {
-    const city = document.getElementById("citySelect").value;
-    const result = document.getElementById("ongkirResult");
-    const cityName = document.getElementById("cityName");
-    const price = document.getElementById("price");
-    const etd = document.getElementById("etd");
-
-    try {
-      // Ambil data dari ongkir.json
-      const res = await fetch("ongkir.json");
-      const data = await res.json();
-
-      if (city && data[city]) {
-        cityName.textContent = data[city].name;
-        price.textContent = data[city].price;
-        etd.textContent = data[city].etd;
-        result.classList.remove("hidden");
-      } else {
-        result.classList.add("hidden");
-      }
-    } catch (error) {
-      console.error("Gagal memuat ongkir:", error);
-    }
-  }
-</script>
 
   <!-- Footer -->
   <footer class="mt-10 border-t border-gray-200 bg-white">
