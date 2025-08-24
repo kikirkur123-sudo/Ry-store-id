@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ry-Store ID - Custom Sticker Anime Indonesia</title>
+  <title>Ry-Store ID – Custom Sticker Anime Indonesia</title>
   <meta name="description" content="Jual beli stiker anime & pop culture. Custom & ready stock. Order via WhatsApp." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -73,7 +73,7 @@
         <p class="mt-3 text-gray-600">Bikin stiker sesuai request atau pilih desain yang sudah ready. Bahan premium (vinyl), tahan air & gores, cocok untuk laptop, motor, helm, botol minum, dll.</p>
         <div class="mt-5 flex gap-3">
           <a href="#produk" class="px-5 py-3 rounded-2xl bg-brand-700 text-white font-semibold shadow-soft hover:translate-y-0.5 transition">Belanja Sekarang</a>
-          <a id="waHero" target="_blank" rel="noopener" class="px-5 py-3 rounded-2xl border border-gray-300 font-semibold hover:bg-gray-100">Chat WhatsApp</a>
+          <a href="https://wa.me/6285162527635" target="_blank" rel="noopener" class="px-5 py-3 rounded-2xl border border-gray-300 font-semibold hover:bg-gray-100">Chat WhatsApp</a>
         </div>
       </div>
       <div class="relative">
@@ -132,6 +132,7 @@
     </a>
   </div>
 </section>
+
 
 
 
@@ -225,6 +226,110 @@
 
 </section>
 
+<section class="p-6 bg-gray-100 rounded-2xl shadow max-w-3xl mx-auto mt-8">
+  <h2 class="text-xl font-bold mb-4 text-center text-purple-700">Cek Ongkir</h2>
+
+  <form id="ongkirForm" class="grid gap-3">
+    <!-- Asal otomatis Bandung -->
+    <input type="hidden" id="origin" value="23"> <!-- city_id Bandung -->
+
+    <div>
+      <label class="block font-semibold">Kota Tujuan</label>
+      <select id="destination" class="w-full border p-2 rounded"></select>
+    </div>
+
+    <div>
+      <label class="block font-semibold">Berat (gram)</label>
+      <input type="number" id="weight" value="1000" class="w-full border p-2 rounded">
+    </div>
+
+    <div>
+      <label class="block font-semibold">Kurir</label>
+      <select id="courier" class="w-full border p-2 rounded">
+        <option value="jne">JNE</option>
+        <option value="tiki">TIKI</option>
+        <option value="pos">POS Indonesia</option>
+      </select>
+    </div>
+
+    <button type="submit" class="bg-purple-600 text-white p-2 rounded hover:bg-purple-700">Cek Ongkir</button>
+  </form>
+
+  <div id="result" class="mt-4"></div>
+</section>
+
+<script>
+const apiKey = "Pl0blFd506ef4e311444cea6arSMnpK7"; // API Key RajaOngkir
+const destinationSelect = document.getElementById("destination");
+
+// Ambil daftar kota dari RajaOngkir
+async function loadCities() {
+  try {
+    const res = await fetch("https://api.rajaongkir.com/starter/city", {
+      method: "GET",
+      headers: { key: apiKey }
+    });
+    const data = await res.json();
+    const cities = data.rajaongkir.results;
+
+    cities.forEach(city => {
+      let option = document.createElement("option");
+      option.value = city.city_id;
+      option.text = `${city.city_name} (${city.province})`;
+      destinationSelect.appendChild(option);
+    });
+  } catch (err) {
+    console.error("Error ambil kota:", err);
+  }
+}
+
+// Jalankan saat page load
+loadCities();
+
+// Event submit untuk cek ongkir
+document.getElementById("ongkirForm").addEventListener("submit", async function(e){
+  e.preventDefault();
+
+  let origin = document.getElementById("origin").value; // Bandung (ID = 23)
+  let destination = destinationSelect.value;
+  let weight = document.getElementById("weight").value;
+  let courier = document.getElementById("courier").value;
+
+  try {
+    const res = await fetch("https://api.rajaongkir.com/starter/cost", {
+      method: "POST",
+      headers: {
+        "content-type": "application/x-www-form-urlencoded",
+        key: apiKey
+      },
+      body: `origin=${origin}&destination=${destination}&weight=${weight}&courier=${courier}`
+    });
+    const data = await res.json();
+    const results = data.rajaongkir.results[0].costs;
+
+    let output = `<table class="w-full border mt-4">
+      <tr class='bg-purple-600 text-white'>
+        <th class="p-2">Layanan</th>
+        <th class="p-2">Harga</th>
+        <th class="p-2">Estimasi</th>
+      </tr>`;
+    results.forEach(service => {
+      output += `<tr class="text-center border">
+        <td class="p-2">${service.service}</td>
+        <td class="p-2">Rp ${service.cost[0].value.toLocaleString()}</td>
+        <td class="p-2">${service.cost[0].etd} Hari</td>
+      </tr>`;
+    });
+    output += `</table>`;
+    document.getElementById("result").innerHTML = output;
+  } catch (err) {
+    document.getElementById("result").innerHTML = "<p class='text-red-500'>Gagal ambil data ongkir!</p>";
+  }
+});
+</script>
+
+
+
 
 
   <!-- Footer -->
@@ -235,7 +340,7 @@
   </footer>
 
 <script>
-  const STORE = { whatsapp: "6281234567890" };
+  const STORE = { whatsapp: "6285162527635" };
   const PRODUCTS = [
   { id:"st01", name:"Sticker Pack Blue Archive", price:12500, image:"https://i.postimg.cc/gjvSV0Ht/Ry-Store-ID-Sticker-Blue-Archive.png" },
   { id:"st02", name:"Sticker Pack Honkai Star Rail", price:12500, image:"https://i.postimg.cc/gj9tLh86/Ry-Store-ID-Honkai-Star-Rail.png" },
@@ -317,5 +422,37 @@ let cart = {};
     document.getElementById("year").textContent=new Date().getFullYear();
   });
 </script>
+
+<script>
+// Disable klik kanan
+document.addEventListener("contextmenu", function(e){
+    e.preventDefault();
+});
+
+// Disable shortcut copy (Ctrl+C, Ctrl+X, Ctrl+U, Ctrl+S) + F12
+document.addEventListener("keydown", function(e) {
+    // Cek kombinasi tombol
+    if (
+        (e.ctrlKey && (e.key === "c" || e.key === "C")) || 
+        (e.ctrlKey && (e.key === "x" || e.key === "X")) || 
+        (e.ctrlKey && (e.key === "u" || e.key === "U")) ||
+        (e.ctrlKey && (e.key === "s" || e.key === "S")) ||
+        (e.key === "F12")
+    ) {
+        e.preventDefault();
+    }
+});
+
+// Disable drag image / select text
+document.addEventListener("dragstart", function(e) {
+    e.preventDefault();
+});
+document.addEventListener("selectstart", function(e) {
+    e.preventDefault();
+});
+</script>
+
+
+
 </body>
 </html>
