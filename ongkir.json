@@ -1,0 +1,31 @@
+{
+  "Bandung": {
+    "Jakarta": { "price": "Rp 15.000", "etd": "1-2 Hari" },
+    "Bekasi": { "price": "Rp 15.000", "etd": "1-2 Hari" },
+    "Depok": { "price": "Rp 15.000", "etd": "1-2 Hari" },
+    "Bogor": { "price": "Rp 17.000", "etd": "1-2 Hari" },
+    "Tangerang": { "price": "Rp 17.000", "etd": "1-2 Hari" },
+    "Cirebon": { "price": "Rp 18.000", "etd": "1-2 Hari" },
+    "Semarang": { "price": "Rp 20.000", "etd": "2-3 Hari" },
+    "Yogyakarta": { "price": "Rp 22.000", "etd": "2-3 Hari" },
+    "Surabaya": { "price": "Rp 25.000", "etd": "2-3 Hari" },
+    "Malang": { "price": "Rp 27.000", "etd": "2-3 Hari" },
+    "Denpasar": { "price": "Rp 30.000", "etd": "3-4 Hari" },
+    "Mataram": { "price": "Rp 32.000", "etd": "3-5 Hari" },
+    "Kupang": { "price": "Rp 60.000", "etd": "6-9 Hari" },
+    "Pontianak": { "price": "Rp 35.000", "etd": "3-5 Hari" },
+    "Banjarmasin": { "price": "Rp 36.000", "etd": "3-5 Hari" },
+    "Balikpapan": { "price": "Rp 38.000", "etd": "3-6 Hari" },
+    "Samarinda": { "price": "Rp 38.000", "etd": "3-6 Hari" },
+    "Makassar": { "price": "Rp 40.000", "etd": "3-6 Hari" },
+    "Manado": { "price": "Rp 45.000", "etd": "4-7 Hari" },
+    "Medan": { "price": "Rp 48.000", "etd": "4-7 Hari" },
+    "Pekanbaru": { "price": "Rp 42.000", "etd": "3-6 Hari" },
+    "Padang": { "price": "Rp 40.000", "etd": "3-6 Hari" },
+    "Palembang": { "price": "Rp 35.000", "etd": "3-5 Hari" },
+    "Lampung": { "price": "Rp 30.000", "etd": "2-4 Hari" },
+    "Banda Aceh": { "price": "Rp 55.000", "etd": "5-8 Hari" },
+    "Ambon": { "price": "Rp 65.000", "etd": "6-9 Hari" },
+    "Jayapura": { "price": "Rp 75.000", "etd": "7-10 Hari" }
+  }
+}
