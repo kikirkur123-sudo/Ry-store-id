@@ -445,35 +445,6 @@ let cart = {};
   });
 </script>
 
-<script>
-// Disable klik kanan
-document.addEventListener("contextmenu", function(e){
-    e.preventDefault();
-});
-
-// Disable shortcut copy (Ctrl+C, Ctrl+X, Ctrl+U, Ctrl+S) + F12
-document.addEventListener("keydown", function(e) {
-    // Cek kombinasi tombol
-    if (
-        (e.ctrlKey && (e.key === "c" || e.key === "C")) || 
-        (e.ctrlKey && (e.key === "x" || e.key === "X")) || 
-        (e.ctrlKey && (e.key === "u" || e.key === "U")) ||
-        (e.ctrlKey && (e.key === "s" || e.key === "S")) ||
-    ) {
-        e.preventDefault();
-    }
-});
-
-// Disable drag image / select text
-document.addEventListener("dragstart", function(e) {
-    e.preventDefault();
-});
-document.addEventListener("selectstart", function(e) {
-    e.preventDefault();
-});
-</script>
-
-
 
 </body>
 </html>
