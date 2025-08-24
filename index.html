@@ -1,184 +1,173 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ry-Store ID – Custom Sticker Bandung</title>
-  <meta name="description" content="Jual beli stiker anime & pop culture. Custom & ready stock. Order via WhatsApp." />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RY Store – Sticker Shop</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: { sans: ["Inter", "ui-sans-serif", "system-ui"] },
-          boxShadow: { soft: "0 6px 20px rgba(0,0,0,0.08)" },
-          colors: {
-            brand: {
-              DEFAULT: "#6D28D9",
-              50: "#F5F3FF",
-              100: "#EDE9FE",
-              600: "#7C3AED",
-              700: "#6D28D9"
-            }
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    html { scroll-behavior: smooth }
-    body {
-      -webkit-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-    body, img { -webkit-touch-callout: none; }
-    body { -webkit-tap-highlight-color: transparent; }
-  </style>
 </head>
-<body class="bg-gray-50 text-gray-900 antialiased" oncontextmenu="return false">
+<body class="bg-gray-50 font-sans">
 
-  <!-- Top Notice -->
-  <div class="w-full bg-brand-50 text-brand-700 text-center text-sm py-2 px-3">
-    Custom by request • Kirim ke seluruh Indonesia • COD via ekspedisi tersedia
-  </div>
+  <!-- Navbar -->
+  <header class="bg-white border-b border-gray-100 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="#" class="font-extrabold text-xl text-brand-700">RY Store</a>
 
-  <!-- Header -->
-  <header class="sticky top-0 z-40 backdrop-blur bg-white/90 border-b border-gray-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center gap-3 py-3">
-        <!-- Mobile Menu -->
-        <button id="openMenu" class="p-2 rounded-xl hover:bg-gray-100 lg:hidden" aria-label="Buka menu">
-          <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
-        </button>
-
-        <!-- Logo -->
-        <a href="#" class="flex items-center gap-3">
-          <div class="h-10 w-10 rounded-2xl bg-brand-600 flex items-center justify-center text-white font-bold">RY</div>
-          <div>
-            <h1 class="text-lg font-extrabold leading-tight">Ry-Store ID</h1>
-            <p class="text-xs text-gray-500 -mt-0.5">Sticker • Case • Merch Anime</p>
-          </div>
-        </a>
-
-        <div class="flex-1"></div>
-
-        <!-- Search Desktop -->
-        <div class="hidden md:flex items-center gap-2 max-w-lg w-full">
-          <div class="relative flex-1">
-            <input id="searchInput" type="search" placeholder="Cari stiker... (waifu, chibi, brand)" class="w-full pl-10 pr-3 py-2.5 rounded-2xl border border-gray-200 focus:ring-2 focus:ring-brand-600/30 focus:border-brand-600 bg-white shadow-soft placeholder:text-gray-400" />
-            <svg class="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16z"/></svg>
-          </div>
-        </div>
-
-        <!-- Cart -->
-        <button id="openCart" class="ml-2 relative p-2 rounded-xl hover:bg-gray-100">
-          <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-2.3 2.3c-.6.6-.2 1.7.7 1.7H17m0 0a2 2 0 100 4 2 2 0 000-4m-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
-          <span id="cartCount" class="absolute -top-1 -right-1 text-xs bg-brand-600 text-white rounded-full px-1.5">0</span>
-        </button>
+      <!-- Search -->
+      <div class="flex-1 px-4 hidden md:block">
+        <input id="searchInput" type="text" placeholder="Cari produk..."
+          class="w-full px-4 py-2 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brand-700 focus:outline-none"/>
       </div>
 
-      <!-- Mobile Search -->
-      <div class="md:hidden pb-3">
-        <div class="relative">
-          <input id="searchInputMobile" type="search" placeholder="Cari stiker..." class="w-full pl-10 pr-3 py-2.5 rounded-2xl border border-gray-200 focus:ring-2 focus:ring-brand-600/30 focus:border-brand-600 bg-white shadow-soft placeholder:text-gray-400" />
-          <svg class="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16z"/></svg>
-        </div>
-      </div>
+      <!-- Cart Button -->
+      <button id="cartBtn" class="relative flex items-center gap-2 px-3 py-2 rounded-xl border border-gray-200 hover:bg-gray-50">
+        <span class="material-icons">shopping_cart</span>
+        <span id="cartCount" class="absolute -top-2 -right-2 bg-brand-700 text-white text-xs rounded-full px-2">0</span>
+      </button>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="relative bg-white">
-    <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 items-center px-4 sm:px-6 lg:px-8 py-12">
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 grid grid-cols-1 lg:grid-cols-4 gap-8">
+
+    <!-- Sidebar Filter -->
+    <aside class="lg:col-span-1 hidden lg:block space-y-6">
       <div>
-        <h2 class="text-3xl sm:text-4xl font-extrabold leading-tight">
-          Stiker Anime & Pop Culture — <span class="text-brand-700">Custom & Ready Stock</span>
-        </h2>
-        <p class="mt-3 text-gray-600">Bikin stiker sesuai request atau pilih desain yang sudah ready. Bahan premium (vinyl), tahan air & gores, cocok untuk laptop, motor, helm, botol minum, dll.</p>
-        <div class="mt-5 flex flex-wrap gap-3">
-          <a href="#produk" class="px-5 py-3 rounded-2xl bg-brand-700 text-white font-semibold shadow-soft hover:translate-y-0.5 transition">Belanja Sekarang</a>
-          <a id="waHero" target="_blank" rel="noopener" class="px-5 py-3 rounded-2xl border border-gray-300 font-semibold hover:bg-gray-100">Chat WhatsApp</a>
+        <h3 class="font-bold mb-2">Finishing</h3>
+        <div class="space-y-2">
+          <label class="flex items-center gap-2"><input type="checkbox" value="Glossy" class="filter"> Glossy</label>
+          <label class="flex items-center gap-2"><input type="checkbox" value="Matte" class="filter"> Matte</label>
         </div>
       </div>
-      <div class="relative">
-        <img src="https://images.unsplash.com/photo-1620253764198-c2c235b1c3c3?q=80&w=1200&auto=format&fit=crop" alt="Sticker mockup" class="rounded-3xl shadow-soft w-full object-cover max-h-[420px]">
-        <div class="absolute -bottom-4 -left-4 bg-white rounded-2xl px-4 py-2 shadow-soft text-sm">Vinyl • Waterproof • Glossy</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Produk -->
-  <section id="produk" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
       <div>
-        <h3 class="text-2xl font-extrabold">Produk Pilihan</h3>
-        <p class="text-sm text-gray-500">Pilih desain ready atau pesan custom.</p>
-      </div>
-      <div class="flex items-center gap-2">
-        <label class="text-sm text-gray-500">Urutkan</label>
-        <select id="sortSelect" class="px-3 py-2 rounded-xl border border-gray-200">
-          <option value="popular">Terpopuler</option>
-          <option value="price-asc">Harga: Rendah → Tinggi</option>
-          <option value="price-desc">Harga: Tinggi → Rendah</option>
-          <option value="newest">Terbaru</option>
-        </select>
-      </div>
-    </div>
-
-    <div id="productGrid" class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6"></div>
-
-    <!-- Empty State -->
-    <div id="emptyState" class="hidden text-center py-20">
-      <p class="text-lg font-semibold">Tidak ada produk yang cocok.</p>
-      <p class="text-gray-500">Coba ubah kata kunci atau filter.</p>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="mt-10 border-t border-gray-200 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid md:grid-cols-4 gap-8">
-      <div>
-        <div class="flex items-center gap-3">
-          <div class="h-10 w-10 rounded-2xl bg-brand-600 flex items-center justify-center text-white font-bold">RY</div>
-          <div>
-            <p class="font-extrabold">RY Store</p>
-            <p class="text-xs text-gray-500">Bandung, Indonesia</p>
-          </div>
+        <h3 class="font-bold mb-2">Ukuran</h3>
+        <div class="space-y-2">
+          <label class="flex items-center gap-2"><input type="checkbox" value="Small" class="filter"> Small</label>
+          <label class="flex items-center gap-2"><input type="checkbox" value="Medium" class="filter"> Medium</label>
+          <label class="flex items-center gap-2"><input type="checkbox" value="Large" class="filter"> Large</label>
         </div>
-        <p class="mt-3 text-sm text-gray-600">Custom merch anime: stiker, case HP, gantungan kunci. Order by WA, fast response.</p>
       </div>
-      <div>
-        <p class="font-semibold mb-3">Bantuan</p>
-        <ul class="space-y-2 text-sm text-gray-600">
-          <li>FAQ</li>
-          <li>Ketentuan & Pengembalian</li>
-          <li>Privasi</li>
-        </ul>
+    </aside>
+
+    <!-- Produk -->
+    <section class="lg:col-span-3">
+      <div class="flex items-end justify-between gap-4 mb-6">
+        <div>
+          <h3 class="text-2xl font-extrabold">Produk Pilihan</h3>
+          <p class="text-sm text-gray-500">Pilih desain ready atau pesan custom.</p>
+        </div>
+        <div class="hidden md:flex items-center gap-2">
+          <label class="text-sm text-gray-500">Urutkan</label>
+          <select id="sortSelect" class="px-3 py-2 rounded-xl border border-gray-200">
+            <option value="popular">Terpopuler</option>
+            <option value="price-asc">Harga: Rendah → Tinggi</option>
+            <option value="price-desc">Harga: Tinggi → Rendah</option>
+            <option value="newest">Terbaru</option>
+          </select>
+        </div>
       </div>
-      <div>
-        <p class="font-semibold mb-3">Info</p>
-        <ul class="space-y-2 text-sm text-gray-600">
-          <li>Open PO tiap hari</li>
-          <li>Pengiriman via JNE, J&T, Sicepat</li>
-          <li>Reseller & dropship welcome</li>
-        </ul>
+
+      <!-- Grid Produk -->
+      <div id="productGrid" 
+           class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
       </div>
-      <div>
-        <p class="font-semibold mb-3">Kontak</p>
-        <ul class="space-y-2 text-sm text-gray-600">
-          <li>Email: hello@contoh.tld</li>
-          <li>Instagram: @rystore.id</li>
-          <li>WhatsApp: <a id="waFooter" class="text-brand-700 font-medium" target="_blank" rel="noopener">Chat Sekarang</a></li>
-        </ul>
+
+      <!-- Empty State -->
+      <div id="emptyState" class="hidden text-center py-20">
+        <p class="text-lg font-semibold">Tidak ada produk yang cocok.</p>
+        <p class="text-gray-500">Coba ubah kata kunci atau filter.</p>
       </div>
+    </section>
+  </main>
+
+  <!-- Cart Drawer -->
+  <div id="cartDrawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-white shadow-xl transform translate-x-full transition z-50">
+    <div class="flex justify-between items-center px-4 py-3 border-b">
+      <h2 class="text-lg font-bold">Keranjang</h2>
+      <button id="closeCart" class="text-gray-500">X</button>
     </div>
-    <div class="text-center text-xs text-gray-500 pb-8">© <span id="year"></span> RY Store. Dibuat untuk GitHub Pages.</div>
-  </footer>
+    <div id="cartItems" class="p-4 space-y-4 overflow-y-auto h-[70%]"></div>
+    <div class="p-4 border-t">
+      <div class="flex justify-between font-bold mb-3">
+        <span>Total:</span>
+        <span id="cartTotal">Rp0</span>
+      </div>
+      <button class="w-full py-3 bg-brand-700 text-white rounded-xl font-semibold">Checkout</button>
+    </div>
+  </div>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // Produk contoh
+    const products = [
+      {id:1, name:"Sticker Anime", price:10000, finish:"Glossy", size:"Small", image:"https://i.postimg.cc/gjvSV0Ht/9.png"},
+      {id:2, name:"Sticker Lucu", price:12000, finish:"Matte", size:"Medium", image:"https://i.postimg.cc/gjvSV0Ht/9.png"},
+      {id:3, name:"Sticker Custom", price:15000, finish:"Glossy", size:"Large", image:"https://i.postimg.cc/gjvSV0Ht/9.png"},
+    ];
+
+    let cart = [];
+
+    function formatIDR(num){ return "Rp" + num.toLocaleString("id-ID"); }
+
+    function productCard(p){
+      return `
+      <div class="group bg-white border border-gray-100 rounded-3xl overflow-hidden shadow hover:shadow-lg transition">
+        <div class="relative aspect-square overflow-hidden">
+          <img src="${p.image}" alt="${p.name}" 
+               class="w-full h-full object-cover group-hover:scale-105 transition"/>
+          <div class="absolute top-3 left-3 bg-white/90 px-2 py-1 rounded-xl text-xs">${p.finish}</div>
+        </div>
+        <div class="p-4">
+          <p class="font-semibold line-clamp-2">${p.name}</p>
+          <div class="mt-1 text-brand-700 font-bold">${formatIDR(p.price)}</div>
+          <div class="mt-3 flex items-center gap-2">
+            <button onclick="addToCart(${p.id})" class="flex-1 px-4 py-2 rounded-2xl bg-brand-700 text-white font-semibold">Tambah</button>
+          </div>
+        </div>
+      </div>`;
+    }
+
+    function renderProducts(list){
+      const grid=document.getElementById("productGrid");
+      if(list.length===0){
+        document.getElementById("emptyState").classList.remove("hidden");
+        grid.innerHTML="";
+      }else{
+        document.getElementById("emptyState").classList.add("hidden");
+        grid.innerHTML=list.map(productCard).join("");
+      }
+    }
+
+    function addToCart(id){
+      const p=products.find(x=>x.id===id);
+      cart.push(p);
+      renderCart();
+    }
+
+    function renderCart(){
+      const items=document.getElementById("cartItems");
+      items.innerHTML=cart.map((c,i)=>`
+        <div class="flex justify-between items-center">
+          <span>${c.name}</span>
+          <span>${formatIDR(c.price)}</span>
+        </div>
+      `).join("");
+      const total=cart.reduce((a,b)=>a+b.price,0);
+      document.getElementById("cartTotal").textContent=formatIDR(total);
+      document.getElementById("cartCount").textContent=cart.length;
+    }
+
+    // Event Cart Drawer
+    document.getElementById("cartBtn").onclick=()=>document.getElementById("cartDrawer").classList.remove("translate-x-full");
+    document.getElementById("closeCart").onclick=()=>document.getElementById("cartDrawer").classList.add("translate-x-full");
+
+    // Init
+    renderProducts(products);
   </script>
+
+  <style>
+    .text-brand-700{color:#2563eb}
+    .bg-brand-700{background:#2563eb}
+    .shadow-soft{box-shadow:0 4px 12px rgba(0,0,0,0.05);}
+  </style>
+
 </body>
 </html>
