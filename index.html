@@ -5,37 +5,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>RY Store – Sticker Shop</title>
   <meta name="description" content="Jual beli stiker anime & pop culture. Custom & ready stock. Order via WhatsApp." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: { sans: ["Inter", "ui-sans-serif", "system-ui"] },
-          boxShadow: { soft: "0 10px 30px rgba(0,0,0,0.08)" },
-          colors: { brand: { DEFAULT: "#6D28D9", 50: "#F5F3FF", 100: "#EDE9FE", 600: "#7C3AED", 700: "#6D28D9" } }
+          boxShadow: { soft: "0 6px 20px rgba(0,0,0,0.08)" },
+          colors: {
+            brand: {
+              DEFAULT: "#6D28D9",
+              50: "#F5F3FF",
+              100: "#EDE9FE",
+              600: "#7C3AED",
+              700: "#6D28D9"
+            }
+          }
         }
       }
     }
   </script>
   <style>
     html { scroll-behavior: smooth }
-    .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    body {
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    body, img { -webkit-touch-callout: none; }
+    body { -webkit-tap-highlight-color: transparent; }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body class="bg-gray-50 text-gray-900 antialiased" oncontextmenu="return false">
+
   <!-- Top Notice -->
-  <div class="w-full bg-brand-50 text-brand-700 text-center text-sm py-2">Custom by request • Kirim ke seluruh Indonesia • COD via ekspedisi tersedia</div>
+  <div class="w-full bg-brand-50 text-brand-700 text-center text-sm py-2 px-3">
+    Custom by request • Kirim ke seluruh Indonesia • COD via ekspedisi tersedia
+  </div>
 
   <!-- Header -->
-  <header class="sticky top-0 z-40 backdrop-blur supports-backdrop-blur:bg-white/60 bg-white/90 border-b border-gray-200">
+  <header class="sticky top-0 z-40 backdrop-blur bg-white/90 border-b border-gray-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center gap-3 py-3">
-        <button id="openMenu" class="p-2 rounded-xl hover:bg-gray-100 focus:outline-none lg:hidden" aria-label="Buka menu">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <!-- Mobile Menu -->
+        <button id="openMenu" class="p-2 rounded-xl hover:bg-gray-100 lg:hidden" aria-label="Buka menu">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
         </button>
+
+        <!-- Logo -->
         <a href="#" class="flex items-center gap-3">
           <div class="h-10 w-10 rounded-2xl bg-brand-600 flex items-center justify-center text-white font-bold">RY</div>
           <div>
@@ -43,21 +61,24 @@
             <p class="text-xs text-gray-500 -mt-0.5">Sticker • Case • Merch Anime</p>
           </div>
         </a>
+
         <div class="flex-1"></div>
-        <!-- Search -->
-        <div class="hidden md:flex items-center gap-2 max-w-xl w-full">
+
+        <!-- Search Desktop -->
+        <div class="hidden md:flex items-center gap-2 max-w-lg w-full">
           <div class="relative flex-1">
             <input id="searchInput" type="search" placeholder="Cari stiker... (waifu, chibi, brand)" class="w-full pl-10 pr-3 py-2.5 rounded-2xl border border-gray-200 focus:ring-2 focus:ring-brand-600/30 focus:border-brand-600 bg-white shadow-soft placeholder:text-gray-400" />
             <svg class="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16z"/></svg>
           </div>
-          <button id="clearSearch" class="text-sm px-3 py-2 rounded-xl border border-gray-200 hover:bg-gray-100">Bersihkan</button>
         </div>
+
         <!-- Cart -->
         <button id="openCart" class="ml-2 relative p-2 rounded-xl hover:bg-gray-100">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-2.3 2.3c-.6.6-.2 1.7.7 1.7H17m0 0a2 2 0 100 4 2 2 0 000-4m-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
           <span id="cartCount" class="absolute -top-1 -right-1 text-xs bg-brand-600 text-white rounded-full px-1.5">0</span>
         </button>
       </div>
+
       <!-- Mobile Search -->
       <div class="md:hidden pb-3">
         <div class="relative">
@@ -68,113 +89,52 @@
     </div>
   </header>
 
-  <!-- Sidebar Filters (mobile) -->
-  <aside id="sidebar" class="fixed inset-y-0 left-0 w-80 bg-white border-r border-gray-200 shadow-soft -translate-x-full transition-transform duration-300 z-50 lg:translate-x-0 lg:static lg:w-64">
-    <div class="h-full flex flex-col">
-      <div class="px-5 py-4 flex items-center justify-between border-b">
-        <h2 class="font-semibold">Filter</h2>
-        <button id="closeMenu" class="lg:hidden p-2 rounded-xl hover:bg-gray-100" aria-label="Tutup menu">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
-        </button>
+  <!-- Hero -->
+  <section class="relative bg-white">
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 items-center px-4 sm:px-6 lg:px-8 py-12">
+      <div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold leading-tight">
+          Stiker Anime & Pop Culture — <span class="text-brand-700">Custom & Ready Stock</span>
+        </h2>
+        <p class="mt-3 text-gray-600">Bikin stiker sesuai request atau pilih desain yang sudah ready. Bahan premium (vinyl), tahan air & gores, cocok untuk laptop, motor, helm, botol minum, dll.</p>
+        <div class="mt-5 flex flex-wrap gap-3">
+          <a href="#produk" class="px-5 py-3 rounded-2xl bg-brand-700 text-white font-semibold shadow-soft hover:translate-y-0.5 transition">Belanja Sekarang</a>
+          <a id="waHero" target="_blank" rel="noopener" class="px-5 py-3 rounded-2xl border border-gray-300 font-semibold hover:bg-gray-100">Chat WhatsApp</a>
+        </div>
       </div>
-      <div class="flex-1 overflow-y-auto px-5 py-4 space-y-6">
-        <section>
-          <p class="text-xs uppercase tracking-wide text-gray-500 mb-2">Kategori</p>
-          <div class="space-y-2" id="categoryList"></div>
-        </section>
-        <section>
-          <p class="text-xs uppercase tracking-wide text-gray-500 mb-2">Harga</p>
-          <div class="flex items-center gap-3">
-            <input id="minPrice" type="number" min="0" step="500" placeholder="Min" class="w-1/2 px-3 py-2 rounded-xl border border-gray-200" />
-            <input id="maxPrice" type="number" min="0" step="500" placeholder="Max" class="w-1/2 px-3 py-2 rounded-xl border border-gray-200" />
-          </div>
-          <button id="applyPrice" class="mt-2 text-sm px-3 py-2 rounded-xl border border-gray-200 hover:bg-gray-100">Terapkan</button>
-        </section>
-        <section>
-          <p class="text-xs uppercase tracking-wide text-gray-500 mb-2">Finishing</p>
-          <div class="space-y-2" id="finishList"></div>
-        </section>
-      </div>
-      <div class="p-4 border-t">
-        <button id="resetFilters" class="w-full text-sm px-3 py-2 rounded-xl border border-gray-200 hover:bg-gray-100">Reset Filter</button>
+      <div class="relative">
+        <img src="https://images.unsplash.com/photo-1620253764198-c2c235b1c3c3?q=80&w=1200&auto=format&fit=crop" alt="Sticker mockup" class="rounded-3xl shadow-soft w-full object-cover max-h-[420px]">
+        <div class="absolute -bottom-4 -left-4 bg-white rounded-2xl px-4 py-2 shadow-soft text-sm">Vinyl • Waterproof • Glossy</div>
       </div>
     </div>
-  </aside>
+  </section>
 
-  <!-- Main Content -->
-  <main class="lg:ml-64">
-    <!-- Hero -->
-    <section class="relative">
-      <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 items-center px-4 sm:px-6 lg:px-8 py-10">
-        <div>
-          <h2 class="text-3xl sm:text-4xl font-extrabold leading-tight">Stiker Anime & Pop Culture — <span class="text-brand-700">Custom & Ready Stock</span></h2>
-          <p class="mt-3 text-gray-600">Bikin stiker sesuai request atau pilih desain yang sudah ready. Bahan premium (vinyl), tahan air & gores, cocok untuk laptop, motor, helm, botol minum, dll.</p>
-          <div class="mt-5 flex gap-3">
-            <a href="#produk" class="px-5 py-3 rounded-2xl bg-brand-700 text-white font-semibold shadow-soft hover:translate-y-0.5 transition">Belanja Sekarang</a>
-            <a id="waHero" target="_blank" rel="noopener" class="px-5 py-3 rounded-2xl border border-gray-300 font-semibold hover:bg-gray-100">Chat WhatsApp</a>
-          </div>
-          <dl class="mt-6 grid grid-cols-3 gap-4 text-center">
-            <div class="p-4 rounded-2xl bg-white shadow-soft"><dt class="text-xl font-extrabold">+500</dt><dd class="text-xs text-gray-500">Desain</dd></div>
-            <div class="p-4 rounded-2xl bg-white shadow-soft"><dt class="text-xl font-extrabold">3–5cm</dt><dd class="text-xs text-gray-500">Ukuran populer</dd></div>
-            <div class="p-4 rounded-2xl bg-white shadow-soft"><dt class="text-xl font-extrabold">Bandung</dt><dd class="text-xs text-gray-500">Siap kirim</dd></div>
-          </dl>
-        </div>
-        <div class="relative">
-          <img src="https://images.unsplash.com/photo-1620253764198-c2c235b1c3c3?q=80&w=1600&auto=format&fit=crop" alt="Sticker mockup" class="rounded-3xl shadow-soft w-full object-cover max-h-[420px]">
-          <div class="absolute -bottom-4 -left-4 bg-white rounded-2xl px-4 py-2 shadow-soft text-sm">Vinyl • Waterproof • Glossy</div>
-        </div>
+  <!-- Produk -->
+  <section id="produk" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+      <div>
+        <h3 class="text-2xl font-extrabold">Produk Pilihan</h3>
+        <p class="text-sm text-gray-500">Pilih desain ready atau pesan custom.</p>
       </div>
-    </section>
+      <div class="flex items-center gap-2">
+        <label class="text-sm text-gray-500">Urutkan</label>
+        <select id="sortSelect" class="px-3 py-2 rounded-xl border border-gray-200">
+          <option value="popular">Terpopuler</option>
+          <option value="price-asc">Harga: Rendah → Tinggi</option>
+          <option value="price-desc">Harga: Tinggi → Rendah</option>
+          <option value="newest">Terbaru</option>
+        </select>
+      </div>
+    </div>
 
-    <!-- Products -->
-    <section id="produk" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-      <div class="flex items-end justify-between gap-4 mb-6">
-        <div>
-          <h3 class="text-2xl font-extrabold">Produk Pilihan</h3>
-          <p class="text-sm text-gray-500">Pilih desain ready atau pesan custom.</p>
-        </div>
-        <div class="hidden md:flex items-center gap-2">
-          <label class="text-sm text-gray-500">Urutkan</label>
-          <select id="sortSelect" class="px-3 py-2 rounded-xl border border-gray-200">
-            <option value="popular">Terpopuler</option>
-            <option value="price-asc">Harga: Rendah → Tinggi</option>
-            <option value="price-desc">Harga: Tinggi → Rendah</option>
-            <option value="newest">Terbaru</option>
-          </select>
-        </div>
-      </div>
+    <div id="productGrid" class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6"></div>
 
-      <div id="productGrid" class="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6"></div>
-
-      <!-- Empty State -->
-      <div id="emptyState" class="hidden text-center py-20">
-        <p class="text-lg font-semibold">Tidak ada produk yang cocok.</p>
-        <p class="text-gray-500">Coba ubah kata kunci atau filter.</p>
-      </div>
-    </section>
-  </main>
-
-  <!-- Cart Drawer -->
-  <div id="cartDrawer" class="fixed inset-0 z-50 hidden">
-    <div class="absolute inset-0 bg-black/30" id="closeCartOverlay"></div>
-    <aside class="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-soft border-l border-gray-200 flex flex-col">
-      <div class="p-4 flex items-center justify-between border-b">
-        <h2 class="font-semibold">Keranjang</h2>
-        <button id="closeCart" class="p-2 rounded-xl hover:bg-gray-100" aria-label="Tutup keranjang">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
-        </button>
-      </div>
-      <div id="cartItems" class="flex-1 overflow-y-auto p-4 space-y-4"></div>
-      <div class="p-4 border-t space-y-3">
-        <div class="flex items-center justify-between text-sm"><span>Subtotal</span><span id="cartSubtotal" class="font-semibold">Rp0</span></div>
-        <p class="text-xs text-gray-500">Harga belum termasuk ongkir. Estimasi ukuran default 5cm, bahan vinyl glossy.</p>
-        <div class="flex gap-3">
-          <button id="clearCart" class="flex-1 px-4 py-3 rounded-2xl border border-gray-200 hover:bg-gray-100">Kosongkan</button>
-          <a id="checkoutWA" target="_blank" rel="noopener" class="flex-1 text-center px-4 py-3 rounded-2xl bg-brand-700 text-white font-semibold shadow-soft hover:translate-y-0.5 transition">Checkout WhatsApp</a>
-        </div>
-      </div>
-    </aside>
-  </div>
+    <!-- Empty State -->
+    <div id="emptyState" class="hidden text-center py-20">
+      <p class="text-lg font-semibold">Tidak ada produk yang cocok.</p>
+      <p class="text-gray-500">Coba ubah kata kunci atau filter.</p>
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer class="mt-10 border-t border-gray-200 bg-white">
@@ -218,237 +178,7 @@
   </footer>
 
   <script>
-    /** =============================
-     * KONFIGURASI TOKO
-     * Ganti nomor WA, nama toko, dan daftar produk di bawah.
-     * ============================= */
-    const STORE = {
-      name: "RY Store",
-      whatsapp: "6281234567890", // GANTI ke nomor kamu (format tanpa +)
-      waGreeting: "Halo RY Store, saya mau order stiker:",
-    };
-
-    /** Produk contoh. Ganti sesuai kebutuhan. */
-    const PRODUCTS = [
-      { id: "st01", name: "Sticker Waifu – Glossy 5cm", price: 6000, image: "https://images.unsplash.com/photo-1548372293-374ad32a7d1f?q=80&w=1200&auto=format&fit=crop", category: "Anime", finish: "Glossy", tags: ["waifu","anime","glossy"], createdAt: "2025-08-10" },
-      { id: "st02", name: "Sticker Chibi – Matte 5cm", price: 6000, image: "https://images.unsplash.com/photo-1617761772797-ef4fcecdaf3b?q=80&w=1200&auto=format&fit=crop", category: "Chibi", finish: "Matte", tags: ["chibi","kawaii","matte"], createdAt: "2025-07-28" },
-      { id: "st03", name: "Pack 5pcs Random Anime", price: 25000, image: "https://images.unsplash.com/photo-1520975899930-bd96420b78bb?q=80&w=1200&auto=format&fit=crop", category: "Bundle", finish: "Glossy", tags: ["bundle","random","paket"], createdAt: "2025-08-01" },
-      { id: "st04", name: "Logo Brand – Die Cut 6cm", price: 7000, image: "https://images.unsplash.com/photo-1518314916381-77a37c2a49ae?q=80&w=1200&auto=format&fit=crop", category: "Brand", finish: "Glossy", tags: ["brand","logo","die cut"], createdAt: "2025-06-18" },
-      { id: "st05", name: "Genshin Character – 5cm", price: 7000, image: "https://images.unsplash.com/photo-1578926288020-8f12243dcec5?q=80&w=1200&auto=format&fit=crop", category: "Anime", finish: "Matte", tags: ["genshin","anime"], createdAt: "2025-08-15" },
-      { id: "st06", name: "Holo Glitter Add-on", price: 2000, image: "https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?q=80&w=1200&auto=format&fit=crop", category: "Add-on", finish: "Holographic", tags: ["holo","glitter","addon"], createdAt: "2025-07-11" },
-      { id: "st07", name: "Sticker Minimalist – 4cm", price: 5000, image: "https://images.unsplash.com/photo-1611162618071-b39a2ecf2cf5?q=80&w=1200&auto=format&fit=crop", category: "Minimal", finish: "Matte", tags: ["simple","clean"], createdAt: "2025-05-25" },
-      { id: "st08", name: "Pack 10pcs Mix", price: 45000, image: "https://images.unsplash.com/photo-1584907797070-8e5a87a228a3?q=80&w=1200&auto=format&fit=crop", category: "Bundle", finish: "Glossy", tags: ["bundle","mix","paket"], createdAt: "2025-08-05" }
-    ];
-
-    /** Dinamis: kategori & finishing */
-    const CATEGORIES = [...new Set(PRODUCTS.map(p => p.category))];
-    const FINISHES = [...new Set(PRODUCTS.map(p => p.finish))];
-
-    /** State */
-    let filters = { q: "", categories: new Set(), finishes: new Set(), min: 0, max: Infinity, sort: "popular" };
-    let cart = JSON.parse(localStorage.getItem("cart") || "{}"); // {id: qty}
-
-    /** Utils */
-    const formatIDR = n => n.toLocaleString("id-ID", { style: "currency", currency: "IDR", maximumFractionDigits: 0 });
-
-    function syncCartBadge(){
-      const count = Object.values(cart).reduce((a,b)=>a+b,0);
-      document.getElementById("cartCount").textContent = count;
-      localStorage.setItem("cart", JSON.stringify(cart));
-    }
-
-    function buildFilters(){
-      const catWrap = document.getElementById("categoryList");
-      catWrap.innerHTML = CATEGORIES.map(cat => `
-        <label class="flex items-center gap-3">
-          <input type="checkbox" class="rounded" value="${cat}" ${filters.categories.has(cat)?"checked":""}>
-          <span>${cat}</span>
-        </label>`).join("");
-      catWrap.querySelectorAll('input').forEach(el=>{
-        el.addEventListener('change', e=>{
-          if(e.target.checked) filters.categories.add(e.target.value); else filters.categories.delete(e.target.value);
-          renderProducts();
-        });
-      });
-
-      const finWrap = document.getElementById("finishList");
-      finWrap.innerHTML = FINISHES.map(fin => `
-        <label class="flex items-center gap-3">
-          <input type="checkbox" class="rounded" value="${fin}" ${filters.finishes.has(fin)?"checked":""}>
-          <span>${fin}</span>
-        </label>`).join("");
-      finWrap.querySelectorAll('input').forEach(el=>{
-        el.addEventListener('change', e=>{
-          if(e.target.checked) filters.finishes.add(e.target.value); else filters.finishes.delete(e.target.value);
-          renderProducts();
-        });
-      });
-    }
-
-    function productCard(p){
-      return `
-      <div class="group bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-soft hover:shadow-lg transition">
-        <div class="relative aspect-[4/3] overflow-hidden">
-          <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition"/>
-          <div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-2 py-1 rounded-xl text-xs">${p.finish}</div>
-        </div>
-        <div class="p-4">
-          <p class="font-semibold line-clamp-2">${p.name}</p>
-          <div class="mt-1 text-brand-700 font-bold">${formatIDR(p.price)}</div>
-          <div class="mt-3 flex items-center gap-2">
-            <button data-add="${p.id}" class="flex-1 px-4 py-2 rounded-2xl bg-brand-700 text-white font-semibold">Tambah</button>
-            <button data-quick="${p.id}" class="px-4 py-2 rounded-2xl border border-gray-200">Detail</button>
-          </div>
-        </div>
-      </div>`;
-    }
-
-    function getFilteredProducts(){
-      let list = PRODUCTS.filter(p=>{
-        const q = filters.q.toLowerCase();
-        const hit = !q || p.name.toLowerCase().includes(q) || p.tags.some(t=>t.toLowerCase().includes(q));
-        const catOK = !filters.categories.size || filters.categories.has(p.category);
-        const finOK = !filters.finishes.size || filters.finishes.has(p.finish);
-        const priceOK = p.price >= filters.min && p.price <= filters.max;
-        return hit && catOK && finOK && priceOK;
-      });
-      if(filters.sort === 'price-asc') list.sort((a,b)=>a.price-b.price);
-      if(filters.sort === 'price-desc') list.sort((a,b)=>b.price-a.price);
-      if(filters.sort === 'newest') list.sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt));
-      return list;
-    }
-
-    function renderProducts(){
-      const grid = document.getElementById("productGrid");
-      const empty = document.getElementById("emptyState");
-      const list = getFilteredProducts();
-      grid.innerHTML = list.map(productCard).join("");
-      empty.classList.toggle("hidden", list.length !== 0);
-      // bind add buttons
-      grid.querySelectorAll('[data-add]').forEach(btn=>{
-        btn.addEventListener('click', e=>{
-          const id = e.currentTarget.getAttribute('data-add');
-          cart[id] = (cart[id]||0)+1;
-          syncCartBadge();
-        })
-      });
-      // quick view (for now just add one & open cart)
-      grid.querySelectorAll('[data-quick]').forEach(btn=>{
-        btn.addEventListener('click', e=>{
-          const id = e.currentTarget.getAttribute('data-quick');
-          cart[id] = (cart[id]||0)+1;
-          syncCartBadge();
-          openCart();
-        })
-      });
-    }
-
-    function renderCart(){
-      const wrap = document.getElementById('cartItems');
-      const items = Object.entries(cart).map(([id,qty])=>{
-        const p = PRODUCTS.find(x=>x.id===id);
-        return { ...p, qty };
-      });
-      if(items.length===0){
-        wrap.innerHTML = '<div class="text-center text-gray-500 py-10">Keranjang kosong.</div>';
-      } else {
-        wrap.innerHTML = items.map(it=>`
-          <div class="flex gap-3 border border-gray-100 rounded-2xl p-3">
-            <img src="${it.image}" class="h-16 w-16 rounded-xl object-cover" alt="${it.name}">
-            <div class="flex-1 min-w-0">
-              <p class="font-medium truncate">${it.name}</p>
-              <p class="text-sm text-brand-700 font-semibold">${formatIDR(it.price)}</p>
-              <div class="mt-2 flex items-center gap-2">
-                <button data-dec="${it.id}" class="px-2 py-1 rounded-lg border">-</button>
-                <span class="min-w-6 text-center">${it.qty}</span>
-                <button data-inc="${it.id}" class="px-2 py-1 rounded-lg border">+</button>
-                <button data-del="${it.id}" class="ml-auto text-sm text-red-600">Hapus</button>
-              </div>
-            </div>
-          </div>`).join('');
-      }
-      const subtotal = items.reduce((a,b)=>a + b.price*b.qty, 0);
-      document.getElementById('cartSubtotal').textContent = formatIDR(subtotal);
-
-      wrap.querySelectorAll('[data-inc]').forEach(b=>b.addEventListener('click', e=>{ const id=e.currentTarget.getAttribute('data-inc'); cart[id]++; syncCartBadge(); renderCart(); }));
-      wrap.querySelectorAll('[data-dec]').forEach(b=>b.addEventListener('click', e=>{ const id=e.currentTarget.getAttribute('data-dec'); cart[id]=Math.max(1,cart[id]-1); syncCartBadge(); renderCart(); }));
-      wrap.querySelectorAll('[data-del]').forEach(b=>b.addEventListener('click', e=>{ const id=e.currentTarget.getAttribute('data-del'); delete cart[id]; syncCartBadge(); renderCart(); }));
-
-      // build WA link
-      const lines = items.map(i=>`• ${i.name} x${i.qty} — ${formatIDR(i.price)} = ${formatIDR(i.price*i.qty)}`).join('%0A');
-      const totalLine = `Total: ${formatIDR(subtotal)}`;
-      const msg = `${encodeURIComponent(STORE.waGreeting)}%0A%0A${lines}%0A%0A${encodeURIComponent(totalLine)}%0A%0ANama:%0AAlamat:%0ACatatan:`;
-      const wa = `https://wa.me/${STORE.whatsapp}?text=${msg}`;
-      document.getElementById('checkoutWA').setAttribute('href', wa);
-    }
-
-    function openCart(){
-      document.getElementById('cartDrawer').classList.remove('hidden');
-      renderCart();
-    }
-    function closeCart(){
-      document.getElementById('cartDrawer').classList.add('hidden');
-    }
-
-    // Event wiring
-    window.addEventListener('DOMContentLoaded', ()=>{
-      // search
-      const s1 = document.getElementById('searchInput');
-      const s2 = document.getElementById('searchInputMobile');
-      function setQ(v){ filters.q = v.trim(); renderProducts(); }
-      s1 && s1.addEventListener('input', e=> setQ(e.target.value));
-      s2 && s2.addEventListener('input', e=> setQ(e.target.value));
-      document.getElementById('clearSearch').addEventListener('click', ()=>{ s1.value=''; setQ(''); });
-
-      // sidebar
-      document.getElementById('openMenu').addEventListener('click', ()=> document.getElementById('sidebar').classList.remove('-translate-x-full'));
-      document.getElementById('closeMenu').addEventListener('click', ()=> document.getElementById('sidebar').classList.add('-translate-x-full'));
-
-      // price
-      document.getElementById('applyPrice').addEventListener('click', ()=>{
-        const min = parseInt(document.getElementById('minPrice').value||'0',10);
-        const maxVal = document.getElementById('maxPrice').value;
-        const max = maxVal? parseInt(maxVal,10) : Infinity;
-        filters.min=min; filters.max=max; renderProducts();
-      });
-
-      // reset
-      document.getElementById('resetFilters').addEventListener('click', ()=>{
-        filters = { q: "", categories: new Set(), finishes: new Set(), min: 0, max: Infinity, sort: "popular" };
-        document.getElementById('minPrice').value='';
-        document.getElementById('maxPrice').value='';
-        buildFilters();
-        renderProducts();
-      });
-
-      // sort
-      document.getElementById('sortSelect').addEventListener('change', e=>{ filters.sort = e.target.value; renderProducts(); });
-
-      // cart
-      document.getElementById('openCart').addEventListener('click', openCart);
-      document.getElementById('closeCart').addEventListener('click', closeCart);
-      document.getElementById('closeCartOverlay').addEventListener('click', closeCart);
-      document.getElementById('clearCart').addEventListener('click', ()=>{ cart = {}; syncCartBadge(); renderCart(); });
-
-      // WA links
-      const waLinks = [document.getElementById('waHero'), document.getElementById('waFooter')].filter(Boolean);
-      waLinks.forEach(a=> a.setAttribute('href', `https://wa.me/${STORE.whatsapp}`));
-
-      // init
-      buildFilters();
-      renderProducts();
-      syncCartBadge();
-      document.getElementById('year').textContent = new Date().getFullYear();
-    });
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
-<style>
-  body {
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none; /* Tidak bisa blok teks */
-  }
-</style>
-
-  
 </body>
 </html>
