@@ -226,111 +226,101 @@
 
 </section>
 
-<section class="p-6 bg-gray-100 rounded-2xl shadow max-w-3xl mx-auto mt-8">
-  <h2 class="text-xl font-bold mb-4 text-center text-purple-700">Cek Ongkir</h2>
 
-  <form id="ongkirForm" class="grid gap-3">
-    <!-- Asal otomatis Bandung -->
-    <input type="hidden" id="origin" value="23"> <!-- city_id Bandung -->
 
-    <div>
-      <label class="block font-semibold">Kota Tujuan</label>
-      <select id="destination" class="w-full border p-2 rounded"></select>
-    </div>
+<!-- Estimasi Ongkir Section -->
+<section class="bg-gray-100 py-12">
+  <div class="max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-lg">
+    <h2 class="text-2xl font-bold text-center text-purple-700 mb-6">
+      Estimasi Ongkos Kirim Dari JNE
+    </h2>
+    <p class="text-center text-gray-600 mb-8">
+      Ingat harga dan estimasi waktu dapat berubah tergantung lokasi dan layanan JNE.<br>
+    </p>
 
-    <div>
-      <label class="block font-semibold">Berat (gram)</label>
-      <input type="number" id="weight" value="1000" class="w-full border p-2 rounded">
-    </div>
-
-    <div>
-      <label class="block font-semibold">Kurir</label>
-      <select id="courier" class="w-full border p-2 rounded">
-        <option value="jne">JNE</option>
-        <option value="tiki">TIKI</option>
-        <option value="pos">POS Indonesia</option>
+    <!-- Form Pilih Kota -->
+    <div class="flex flex-col md:flex-row gap-4 justify-center items-center mb-8">
+      <select id="citySelect" 
+              class="w-full md:w-2/3 border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-purple-500 focus:outline-none">
+        <option value="">-- Pilih Kota Tujuan --</option>
+        <option value="jakarta">Jakarta</option>
+        <option value="surabaya">Surabaya</option>
+        <option value="medan">Medan</option>
+        <option value="makassar">Makassar</option>
       </select>
+      <button onclick="cekOngkir()" 
+              class="bg-purple-600 hover:bg-purple-700 text-white font-semibold px-6 py-2 rounded-lg shadow-md transition">
+        Cek Ongkir
+      </button>
     </div>
 
-    <button type="submit" class="bg-purple-600 text-white p-2 rounded hover:bg-purple-700">Cek Ongkir</button>
-  </form>
-
-  <div id="result" class="mt-4"></div>
+    <!-- Hasil Estimasi -->
+    <div id="ongkirResult" class="hidden text-center">
+      <h3 class="text-xl font-semibold text-gray-800 mb-3">Hasil Estimasi</h3>
+      <div class="border rounded-xl shadow p-6 bg-gray-50">
+        <p class="text-lg"><span id="cityName" class="font-bold"></span></p>
+        <p class="text-gray-700">Berat: <span class="font-semibold">1 Kg</span></p>
+        <p class="text-gray-700">Harga: <span id="price" class="font-semibold text-purple-700"></span></p>
+        <p class="text-gray-700">Estimasi Waktu: <span id="etd" class="font-semibold"></span></p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <script>
-const apiKey = "Pl0blFd506ef4e311444cea6arSMnpK7"; // API Key RajaOngkir
-const destinationSelect = document.getElementById("destination");
+  function cekOngkir() {
+    const city = document.getElementById("citySelect").value;
+    const result = document.getElementById("ongkirResult");
+    const cityName = document.getElementById("cityName");
+    const price = document.getElementById("price");
+    const etd = document.getElementById("etd");
 
-// Ambil daftar kota dari RajaOngkir
-async function loadCities() {
-  try {
-    const res = await fetch("https://api.rajaongkir.com/starter/city", {
-      method: "GET",
-      headers: { key: apiKey }
-    });
-    const data = await res.json();
-    const cities = data.rajaongkir.results;
+    let data = {
+      jakarta: { name: "Jakarta", price: "Rp 15.000", etd: "1-2 Hari" },
+      surabaya: { name: "Surabaya", price: "Rp 20.000", etd: "2-3 Hari" },
+      medan: { name: "Medan", price: "Rp 30.000", etd: "3-5 Hari" },
+      makassar: { name: "Makassar", price: "Rp 35.000", etd: "3-6 Hari" }
+    };
 
-    cities.forEach(city => {
-      let option = document.createElement("option");
-      option.value = city.city_id;
-      option.text = `${city.city_name} (${city.province})`;
-      destinationSelect.appendChild(option);
-    });
-  } catch (err) {
-    console.error("Error ambil kota:", err);
+    if (city && data[city]) {
+      cityName.textContent = data[city].name;
+      price.textContent = data[city].price;
+      etd.textContent = data[city].etd;
+      result.classList.remove("hidden");
+    } else {
+      result.classList.add("hidden");
+    }
   }
-}
-
-// Jalankan saat page load
-loadCities();
-
-// Event submit untuk cek ongkir
-document.getElementById("ongkirForm").addEventListener("submit", async function(e){
-  e.preventDefault();
-
-  let origin = document.getElementById("origin").value; // Bandung (ID = 23)
-  let destination = destinationSelect.value;
-  let weight = document.getElementById("weight").value;
-  let courier = document.getElementById("courier").value;
-
-  try {
-    const res = await fetch("https://api.rajaongkir.com/starter/cost", {
-      method: "POST",
-      headers: {
-        "content-type": "application/x-www-form-urlencoded",
-        key: apiKey
-      },
-      body: `origin=${origin}&destination=${destination}&weight=${weight}&courier=${courier}`
-    });
-    const data = await res.json();
-    const results = data.rajaongkir.results[0].costs;
-
-    let output = `<table class="w-full border mt-4">
-      <tr class='bg-purple-600 text-white'>
-        <th class="p-2">Layanan</th>
-        <th class="p-2">Harga</th>
-        <th class="p-2">Estimasi</th>
-      </tr>`;
-    results.forEach(service => {
-      output += `<tr class="text-center border">
-        <td class="p-2">${service.service}</td>
-        <td class="p-2">Rp ${service.cost[0].value.toLocaleString()}</td>
-        <td class="p-2">${service.cost[0].etd} Hari</td>
-      </tr>`;
-    });
-    output += `</table>`;
-    document.getElementById("result").innerHTML = output;
-  } catch (err) {
-    document.getElementById("result").innerHTML = "<p class='text-red-500'>Gagal ambil data ongkir!</p>";
-  }
-});
 </script>
 
 
 
+<script>
+  async function cekOngkir() {
+    const city = document.getElementById("citySelect").value;
+    const result = document.getElementById("ongkirResult");
+    const cityName = document.getElementById("cityName");
+    const price = document.getElementById("price");
+    const etd = document.getElementById("etd");
 
+    try {
+      // Ambil data dari ongkir.json
+      const res = await fetch("ongkir.json");
+      const data = await res.json();
+
+      if (city && data[city]) {
+        cityName.textContent = data[city].name;
+        price.textContent = data[city].price;
+        etd.textContent = data[city].etd;
+        result.classList.remove("hidden");
+      } else {
+        result.classList.add("hidden");
+      }
+    } catch (error) {
+      console.error("Gagal memuat ongkir:", error);
+    }
+  }
+</script>
 
   <!-- Footer -->
   <footer class="mt-10 border-t border-gray-200 bg-white">
